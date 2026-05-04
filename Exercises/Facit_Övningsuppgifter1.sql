@@ -73,3 +73,49 @@ from Elements;
 
 select *
 from ElementsSymbolCheck;
+
+
+-- f)
+select 
+    Name,
+    Red,
+    Green,
+    Blue  
+into Colors2
+from Colors;
+
+select 
+    Name,
+    Red,
+    Green,
+    Blue,
+    format(Red, 'X2') + format(Green, 'X2') + format(Blue, 'X2') as Code 
+from 
+    Colors2;
+
+
+-- g)
+select top 5 * from Types
+
+select 
+    [Integer],
+    [String] 
+into Types2
+from Types;
+
+select 
+    [Integer],
+    cast([Integer] as Float) / 100 as Float,
+    [String],
+
+    dateadd(
+        minute, [Integer],
+        dateadd(day, [Integer] - 1, '2019-01-01 09:00:00')
+    ) as DateTime,
+
+    case 
+        when [Integer] % 2 = 1 then 1
+        else 0
+    end as Bool
+from 
+    Types2;
